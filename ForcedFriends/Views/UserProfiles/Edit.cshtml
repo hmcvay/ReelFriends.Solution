@@ -1,0 +1,32 @@
+@* @{
+  Layout = "_Layout";
+}
+
+@using System.Security.Claims
+
+@if (User.Identity.IsAuthenticated)
+{
+    <p>Hello @User.Identity.Name, finish filling out your profile!</p>
+    @using (Html.BeginForm())
+    {
+    @Html.LabelFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name, new {@class= "form-control", type="text", placeholder = "Name", required = "required"})
+
+
+    @Html.LabelFor(m => m.Birthday)
+    @Html.TextBoxFor(m => m.Birthday, new {@class= "form-control", type="date", placeholder = "Birthday", required = "required"})
+
+
+    @Html.LabelFor(m => m.Bio)
+    @Html.TextBoxFor(m => m.Bio, new {@class= "form-control", placeholder = "Bio", required = "required"})
+
+
+  @* enter image 
+    <!-- @Html.LabelFor(m => m.Birthday)
+    @Html.TextBoxFor(m => m.Birthday, new {@class= "form-control", type="date", placeholder = "", required = "required"}) -->
+    
+    }
+}
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p> *@
+

@@ -1,0 +1,32 @@
+@{
+  Layout = "_Layout";
+}
+
+@using ForcedFriends.Models;
+@using System.Security.Claims
+
+@model IEnumerable<ForcedFriends.Models.UserProfile>
+
+if model.birthday and model.bio and model.name == null 
+you still have to fill out your profile
+else display bio and name
+
+<h1>Matches for @User.Identity.Name</h1>
+
+@if (Model.Any())
+{
+  <ul>
+    @foreach (UserProfile userProfile in Model)
+    {
+      <li>@Html.ActionLink($"{userProfile.Name}", "Details", new { id = userProfile.UserProfileId })</li>
+    }
+  </ul>
+} 
+else
+{
+  <h3>No matches yet!</h3>
+}
+
+<p>@Html.ActionLink("Create New Watchlist", "Create")</p>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
