@@ -5,6 +5,5 @@ namespace ForcedFriends.Models
 {
   public class ApplicationUser : IdentityUser
   {
-
   }
 }
