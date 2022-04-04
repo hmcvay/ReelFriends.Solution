@@ -10,7 +10,7 @@ namespace ForcedFriends.Models
     {
       this.JoinEntities = new HashSet<UserMovie>();
     }
-    public int UserId { get; set; }
+    public int UserProfileId { get; set; }
     public string Name { get; set; }
     public DateTime Birthday { get; set; }
     public string Bio { get; set; }
