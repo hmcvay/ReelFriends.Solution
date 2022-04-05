@@ -15,5 +15,6 @@ namespace ForcedFriends.Models
     public string Bio { get; set; }
     public string ProfileImg { get; set; }
     public virtual ICollection<ApplicationUserMovie> JoinEntities {get;set;}
+
   }
 }

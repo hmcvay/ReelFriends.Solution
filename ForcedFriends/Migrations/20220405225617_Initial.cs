@@ -73,27 +73,6 @@ namespace ForcedFriends.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ApplicationUserMovies",
-                columns: table => new
-                {
-                    ApplicationUserMovieId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ApplicationUserId = table.Column<int>(type: "int", nullable: false),
-                    MovieId = table.Column<int>(type: "int", nullable: false),
-                    ApplicationUserId1 = table.Column<string>(type: "varchar(255) CHARACTER SET utf8mb4", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ApplicationUserMovies", x => x.ApplicationUserMovieId);
-                    table.ForeignKey(
-                        name: "FK_ApplicationUserMovies_AspNetUsers_ApplicationUserId1",
-                        column: x => x.ApplicationUserId1,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
@@ -178,10 +157,65 @@ namespace ForcedFriends.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Movies",
+                columns: table => new
+                {
+                    MovieId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Title = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    Release_Date = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    Tagline = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    Overview = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    Poster_Path = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    ApplicationUserId = table.Column<string>(type: "varchar(255) CHARACTER SET utf8mb4", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Movies", x => x.MovieId);
+                    table.ForeignKey(
+                        name: "FK_Movies_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ApplicationUserMovies",
+                columns: table => new
+                {
+                    ApplicationUserMovieId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ApplicationUserId = table.Column<string>(type: "varchar(255) CHARACTER SET utf8mb4", nullable: true),
+                    MovieId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ApplicationUserMovies", x => x.ApplicationUserMovieId);
+                    table.ForeignKey(
+                        name: "FK_ApplicationUserMovies_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ApplicationUserMovies_Movies_MovieId",
+                        column: x => x.MovieId,
+                        principalTable: "Movies",
+                        principalColumn: "MovieId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
-                name: "IX_ApplicationUserMovies_ApplicationUserId1",
+                name: "IX_ApplicationUserMovies_ApplicationUserId",
                 table: "ApplicationUserMovies",
-                column: "ApplicationUserId1");
+                column: "ApplicationUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ApplicationUserMovies_MovieId",
+                table: "ApplicationUserMovies",
+                column: "MovieId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -219,6 +253,11 @@ namespace ForcedFriends.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Movies_ApplicationUserId",
+                table: "Movies",
+                column: "ApplicationUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -240,6 +279,9 @@ namespace ForcedFriends.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Movies");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
