@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using RestSharp;
+using System;
 
 namespace ForcedFriends.Models
 {
@@ -7,9 +8,10 @@ namespace ForcedFriends.Models
   {
     public static async Task<string> ApiCall(string apiKey)
     {
-      RestClient client = new RestClient("https://api.themoviedb.org/3/movie/popular?api_key={apiKey}f&language=en-US&page=1");
-      RestRequest request = new RestRequest($"home.json?api-key={apiKey}", Method.GET);
+       RestClient client = new RestClient("https://api.themoviedb.org/3/movie");
+      RestRequest request = new RestRequest("popular?api_key=95b4acf4153f28be0a4560611c9fcadf&language=en-US&page=1",Method.GET);
       var response = await client.ExecuteTaskAsync(request);
+      Console.WriteLine("reulr11111111111111111111"+response.Content);
       return response.Content;
     }
   }

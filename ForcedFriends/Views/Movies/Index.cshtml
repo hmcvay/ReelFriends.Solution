@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+<h1>All Movies:</h1>
+
+<ol>
+@foreach (Movie movie in Model)
+{
+    <ul>
+        <li>MovieName: @movie.Title</li>
+
+    </ul>
+    <br>
+}
+</ol>
