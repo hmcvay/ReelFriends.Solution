@@ -11,8 +11,7 @@
 @foreach (Movie movie in Model)
 {
     <ul>
-        <li>MovieName: @movie.Title</li>
-
+        <li>@Html.ActionLink($"{movie.Title}", "Details", new {id = movie.Id})</li>
     </ul>
     <br>
 }

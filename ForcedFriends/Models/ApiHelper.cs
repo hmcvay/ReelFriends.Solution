@@ -8,14 +8,25 @@ namespace ForcedFriends.Models
   {
     public static async Task<string> ApiCall(string apiKey)
     {
-       RestClient client = new RestClient("https://api.themoviedb.org/3/movie");
+      RestClient client = new RestClient("https://api.themoviedb.org/3/movie");
       RestRequest request = new RestRequest("popular?api_key=95b4acf4153f28be0a4560611c9fcadf&language=en-US&page=1",Method.GET);
       var response = await client.ExecuteTaskAsync(request);
-      Console.WriteLine("reulr11111111111111111111"+response.Content);
+      return response.Content;
+    }
+
+    public static async Task<string> SingleMovieCall(string apiKey, int id)
+    {
+      RestClient client = new RestClient("https://api.themoviedb.org/3/movie");
+      RestRequest request = new RestRequest($"{id}?{apiKey}", Method.GET);
+
+      var response = await client.ExecuteTaskAsync(request);
       return response.Content;
     }
   }
 }
+
+//https://api.themoviedb.org/3/movie/550?api_key=95b4acf4153f28be0a4560611c9fcadf
+//https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
 
 //  public static async Task<string> ApiCall(string apiKey)
 //     {

@@ -20,6 +20,10 @@ namespace ForcedFriends.Controllers
             return View(allMovies);
         }
 
-
+        public ActionResult Details(int id)
+        {
+            var thisMovie = Movie.GetMovie(EnvironmentVariables.ApiKey, id);
+            return View(thisMovie);
+        }
     }
 }

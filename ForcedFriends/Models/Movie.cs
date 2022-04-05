@@ -7,7 +7,7 @@ namespace ForcedFriends.Models
 {
   public class Movie
   {
-    public int MovieId { get; set; }
+    public int Id { get; set; }
     //public int MovieName { get; set; }
     public string Title { get; set; }
     public int ReleaseDate { get; set; }
@@ -23,6 +23,14 @@ namespace ForcedFriends.Models
       List<Movie> movieList = JsonConvert.DeserializeObject<List<Movie>>(jsonResponse["results"].ToString());
 
       return movieList;
+    }
+    public static Movie GetMovie(string apiKey, int id)
+    {
+      var apiCallTask = ApiHelper.SingleMovieCall(apiKey, id);
+      var result = apiCallTask.Result;
+      JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
+      Movie thisMovie = JsonConvert.DeserializeObject<Movie>(jsonResponse["results"].ToString());
+      return thisMovie;
     }
   }
 }
