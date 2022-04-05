@@ -5,8 +5,7 @@ namespace ForcedFriends.Models
 {
   public class ForcedFriendsContext : IdentityDbContext<ApplicationUser>
   {
-    public DbSet<UserProfile> UserProfiles { get; set; }
-    public DbSet<UserMovie> UserMovies { get; set; }
+    public DbSet<ApplicationUserMovie> ApplicationUserMovies { get; set; }
     public ForcedFriendsContext(DbContextOptions options) : base(options) { }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

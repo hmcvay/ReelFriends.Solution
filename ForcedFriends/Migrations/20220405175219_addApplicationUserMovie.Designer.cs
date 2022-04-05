@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForcedFriends.Migrations
 {
     [DbContext(typeof(ForcedFriendsContext))]
-    [Migration("20220404211918_Initial")]
-    partial class Initial
+    [Migration("20220405175219_addApplicationUserMovie")]
+    partial class addApplicationUserMovie
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,6 +26,12 @@ namespace ForcedFriends.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<string>("Bio")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("Birthday")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -44,6 +50,9 @@ namespace ForcedFriends.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256) CHARACTER SET utf8mb4");
@@ -60,6 +69,9 @@ namespace ForcedFriends.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("ProfileImg")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -83,49 +95,26 @@ namespace ForcedFriends.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("ForcedFriends.Models.UserMovie", b =>
+            modelBuilder.Entity("ForcedFriends.Models.ApplicationUserMovie", b =>
                 {
-                    b.Property<int>("UserMovieId")
+                    b.Property<int>("ApplicationUserMovieId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<int>("ApplicationUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ApplicationUserId1")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<int>("MovieId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.HasKey("ApplicationUserMovieId");
 
-                    b.Property<int?>("UserProfileId")
-                        .HasColumnType("int");
+                    b.HasIndex("ApplicationUserId1");
 
-                    b.HasKey("UserMovieId");
-
-                    b.HasIndex("UserProfileId");
-
-                    b.ToTable("UserMovies");
-                });
-
-            modelBuilder.Entity("ForcedFriends.Models.UserProfile", b =>
-                {
-                    b.Property<int>("UserProfileId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Bio")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<DateTime>("Birthday")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("ProfileImg")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("UserProfileId");
-
-                    b.ToTable("UserProfiles");
+                    b.ToTable("ApplicationUserMovies");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -256,13 +245,13 @@ namespace ForcedFriends.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("ForcedFriends.Models.UserMovie", b =>
+            modelBuilder.Entity("ForcedFriends.Models.ApplicationUserMovie", b =>
                 {
-                    b.HasOne("ForcedFriends.Models.UserProfile", "UserProfile")
+                    b.HasOne("ForcedFriends.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("JoinEntities")
-                        .HasForeignKey("UserProfileId");
+                        .HasForeignKey("ApplicationUserId1");
 
-                    b.Navigation("UserProfile");
+                    b.Navigation("ApplicationUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -316,7 +305,7 @@ namespace ForcedFriends.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ForcedFriends.Models.UserProfile", b =>
+            modelBuilder.Entity("ForcedFriends.Models.ApplicationUser", b =>
                 {
                     b.Navigation("JoinEntities");
                 });
