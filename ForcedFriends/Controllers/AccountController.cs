@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using ForcedFriends.Models;
 using System.Threading.Tasks;
 using ForcedFriends.ViewModels;
+using System;
+using System.Security.Claims;
 
 namespace ForcedFriends.Controllers
 {
@@ -18,9 +20,11 @@ namespace ForcedFriends.Controllers
       _signInManager = signInManager;
       _db = db;
     }
-    public ActionResult Index()
+    public async Task<ActionResult> Index(string id)
     {
-      return View();
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      return View(currentUser);
     }
 
     public IActionResult Register()
@@ -35,7 +39,7 @@ namespace ForcedFriends.Controllers
       IdentityResult result = await _userManager.CreateAsync(user, model.Password);
       if (result.Succeeded)
       {
-        return RedirectToAction("Index");
+        return RedirectToAction("Login");
       }
       else
       {
@@ -65,5 +69,58 @@ namespace ForcedFriends.Controllers
       await _signInManager.SignOutAsync();
       return RedirectToAction("Index");
     }
+    public async Task<ActionResult> Edit(string id)
+    {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      return View(currentUser);
+    }
+    [HttpPost]
+    public async Task<ActionResult> Edit(string id, string bio, string name, DateTime birthday)
+    {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      currentUser.Bio = bio;
+      currentUser.Name = name;
+      currentUser.Birthday = birthday;
+      IdentityResult result = await _userManager.UpdateAsync(currentUser);
+      return RedirectToAction("Index");
+    }
   }
 }
+
+
+// IdentityResult result = await userManager.UpdateAsync(user);
+// if (result.Succeeded)
+// return RedirectToAction("Index");
+// else
+// Errors(result);
+// }
+
+    // public async Task<ActionResult> Edit(int id)
+    // {
+    //   var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    //   var currentUser = await _userManager.FindByIdAsync(userId);
+    //   var thisItem = _db.Items
+    //       .Where(entry => entry.User.Id == currentUser.Id)
+    //       .FirstOrDefault(item => item.ItemId == id);
+    //   if (thisItem == null)
+    //   {
+    //     return RedirectToAction("Details", new {id = id});
+    //   }
+    //   ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name"); 
+    //   return View(thisItem);
+    // }
+
+
+    // [HttpPost]
+    // public ActionResult Edit(Item item, int CategoryId)
+    // {
+    //   if (CategoryId != 0)
+    //   {
+    //     _db.CategoryItem.Add(new CategoryItem() { CategoryId = CategoryId, ItemId = item.ItemId });
+    //   }
+    //   _db.Entry(item).State = EntityState.Modified;
+    //   _db.SaveChanges();
+    //   return RedirectToAction("Index");
+    // }

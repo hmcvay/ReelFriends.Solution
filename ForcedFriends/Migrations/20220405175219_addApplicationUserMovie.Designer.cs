@@ -3,14 +3,16 @@ using System;
 using ForcedFriends.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ForcedFriends.Migrations
 {
     [DbContext(typeof(ForcedFriendsContext))]
-    partial class ForcedFriendsContextModelSnapshot : ModelSnapshot
+    [Migration("20220405175219_addApplicationUserMovie")]
+    partial class addApplicationUserMovie
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
