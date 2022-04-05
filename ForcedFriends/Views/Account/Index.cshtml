@@ -14,7 +14,7 @@
 
     <p>Username: @User.Identity.Name</p> 
     <p>Bio: @Html.DisplayFor(m => m.Bio)</p> 
-    <p>Birthday: @Html.Label(Model.Birthday.ToShortDateString())</p> 
+    <p>Birthday: @Html.DisplayFor(m=>m.Birthday)</p> 
 
     <p>@Html.ActionLink("Edit", "Edit")</p>
 

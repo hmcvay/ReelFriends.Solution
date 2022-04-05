@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForcedFriends.Migrations
 {
     [DbContext(typeof(ForcedFriendsContext))]
-    [Migration("20220405182000_Initial")]
+    [Migration("20220405225617_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -101,10 +101,7 @@ namespace ForcedFriends.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("ApplicationUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ApplicationUserId1")
+                    b.Property<string>("ApplicationUserId")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<int>("MovieId")
@@ -112,9 +109,42 @@ namespace ForcedFriends.Migrations
 
                     b.HasKey("ApplicationUserMovieId");
 
-                    b.HasIndex("ApplicationUserId1");
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("MovieId");
 
                     b.ToTable("ApplicationUserMovies");
+                });
+
+            modelBuilder.Entity("ForcedFriends.Models.Movie", b =>
+                {
+                    b.Property<int>("MovieId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Overview")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Poster_Path")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Release_Date")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Tagline")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("MovieId");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.ToTable("Movies");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -247,9 +277,24 @@ namespace ForcedFriends.Migrations
 
             modelBuilder.Entity("ForcedFriends.Models.ApplicationUserMovie", b =>
                 {
-                    b.HasOne("ForcedFriends.Models.ApplicationUser", "ApplicationUser")
+                    b.HasOne("ForcedFriends.Models.ApplicationUser", null)
                         .WithMany("JoinEntities")
-                        .HasForeignKey("ApplicationUserId1");
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("ForcedFriends.Models.Movie", "Movie")
+                        .WithMany()
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Movie");
+                });
+
+            modelBuilder.Entity("ForcedFriends.Models.Movie", b =>
+                {
+                    b.HasOne("ForcedFriends.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
 
                     b.Navigation("ApplicationUser");
                 });

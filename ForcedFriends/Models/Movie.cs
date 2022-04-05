@@ -10,8 +10,12 @@ namespace ForcedFriends.Models
     public int Id { get; set; }
     //public int MovieName { get; set; }
     public string Title { get; set; }
-    public int ReleaseDate { get; set; }
-    public string Url { get; set; }
+    public string Release_Date { get; set; }
+
+    public string Tagline { get; set; }
+    public string Overview { get; set; }
+    public string Poster_Path { get; set; }
+    public virtual ApplicationUser ApplicationUser {get;set;}
 
     public static List<Movie> GetMovies(string apiKey)
     {
@@ -21,7 +25,13 @@ namespace ForcedFriends.Models
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
 
       List<Movie> movieList = JsonConvert.DeserializeObject<List<Movie>>(jsonResponse["results"].ToString());
-
+      // foreach(var movie in movieList )
+      // {
+      //   Console.WriteLine(movie.Title);
+      //   db.Movies.Add(movie);
+      //   movie.MovieId = movie.Id;
+      //   delete move.Id
+      // }
       return movieList;
     }
     public static Movie GetMovie(string apiKey, int id)
@@ -29,7 +39,7 @@ namespace ForcedFriends.Models
       var apiCallTask = ApiHelper.SingleMovieCall(apiKey, id);
       var result = apiCallTask.Result;
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
-      Movie thisMovie = JsonConvert.DeserializeObject<Movie>(jsonResponse["results"].ToString());
+      Movie thisMovie = JsonConvert.DeserializeObject<Movie>(jsonResponse.ToString());
       return thisMovie;
     }
   }
