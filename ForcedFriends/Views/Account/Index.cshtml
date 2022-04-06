@@ -14,7 +14,7 @@
         <p>Bio: @Html.DisplayFor(m => m.Bio)</p> 
         <p>Birthday: @Html.DisplayFor(m=>m.Birthday)</p> 
 
-        <p>@Html.ActionLink("Edit", "Edit")</p>
+        <button class="btn">@Html.ActionLink("Edit", "Edit")</button>
 
 
         @using (Html.BeginForm("LogOff", "Account"))

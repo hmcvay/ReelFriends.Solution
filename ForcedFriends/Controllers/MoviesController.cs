@@ -49,6 +49,5 @@ namespace ForcedFriends.Controllers
           _db.SaveChanges();
           return RedirectToAction("Index");
         }
-
     }
 }

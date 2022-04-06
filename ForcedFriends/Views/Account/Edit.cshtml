@@ -6,23 +6,25 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-  <p>Hello @User.Identity.Name, finish filling out your profile!</p>
-  @using (Html.BeginForm())
-  {
-    
-    @Html.HiddenFor(model => model.Id)
-
-    @Html.LabelFor(m => m.Name)
-    @Html.EditorFor(m => m.Name, new {@class= "form-control", type="text", placeholder = "Name", required = "required"})
-
-    @Html.LabelFor(m => m.Birthday)
-    @Html.TextBoxFor(m => m.Birthday, new {@class= "form-control", type="date", placeholder = "Birthday", required = "required"})
-
-    @Html.LabelFor(m => m.Bio)
-    @Html.EditorFor(m => m.Bio, new {@class= "form-control", placeholder = "Bio", required = "required"})
-
-    <input type="submit" value ="Save">
-  }
+  <div class="content-container">
+    <p>Hello @User.Identity.Name, finish filling out your profile!</p>
+    @using (Html.BeginForm())
+    {
+      <div class="form-group">
+        @Html.HiddenFor(model => model.Id)
+      </div>
+      <div class="form-group">
+        @Html.EditorFor(m => m.Name, new { htmlAttributes = new {@class= "form-control", type="text", placeholder = "Name", required = "required"}})
+      </div>
+      <div class="form-group">
+        @Html.TextBoxFor(m => m.Birthday, new {@class= "form-control", type="date", placeholder = "Birthday", required = "required"})
+      </div>
+      <div class="form-group">
+      @Html.EditorFor(m => m.Bio, new { htmlAttributes = new {@class= "form-control", placeholder = "Bio", required = "required"}})
+      </div>
+      <div class="form-group">
+        <input type="submit" value ="Save" class="btn btn-primary">
+      </div>
+    }
+  </div>
 }
-
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
