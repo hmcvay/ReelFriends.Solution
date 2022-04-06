@@ -10,7 +10,8 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
-
+using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 
 
 namespace ForcedFriends.Controllers
@@ -93,64 +94,46 @@ namespace ForcedFriends.Controllers
       IdentityResult result = await _userManager.UpdateAsync(currentUser);
       return RedirectToAction("Index");
     }
+    [HttpGet]
+    public ActionResult ViewMatches()
+    {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      List<ApplicationUser> allUsers = _userManager.Users.ToList();
+      Console.WriteLine(allUsers.Count);
+      List<ApplicationUserMovie> thisUserWatchList = new List<ApplicationUserMovie>{};
+      List<ApplicationUserMovie> otherUserWatchList = new List<ApplicationUserMovie>{};
+      foreach(var individualUser in allUsers)
+      {
+        Console.WriteLine("++++Userid++++++++++"+individualUser.UserName);
+        Console.WriteLine("++++Userid++++++++++"+individualUser.Id);
+        thisUserWatchList= _db.ApplicationUserMovies.Where(m => m.ApplicationUserId == userId).ToList();
+       /* if(individualUser.Id!=userId)
+        {
+            otherUserWatchList = _db.ApplicationUserMovies.Where(m => m.ApplicationUserId == individualUser.Id).ToList();
+        }
+        For(var items in thisUserWatchList )
+        {
+          otherUserWatchList.contain(items);
+          count++
+        
+        }
+          display counter;
+          push this counter in an array;
+          eg if we have two users then the array will have two values and pick the highest of them;
+          */
+        /*
+        IEnumerable<ApplicationUserMovie> Match = otherUserWatchList.Intersect(thisUserWatchList);
+        //var MatchCount = thisUserWatchList.Intersect(otherUserWatchList).Count();
+        Console.WriteLine("-------This user watch list-----"+thisUserWatchList.Count());
 
-    //     [HttpGet]
-    // public ActionResult GetWatchList()
-    // {
-    //   var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-    //  // var watchList = _db.ApplicationUserMovies.Where(m => m.ApplicationUserId == userId).ToList();
-    //         var thisUser = _db.ApplicationUsers
-    //       .Include(m => m.JoinEntities)
-    //       .ThenInclude(m => m.Movie)
-    //       .FirstOrDefault(m => m.ApplicationUserId == userId);
-    //   return View(thisUser);
-    //   //return View(watchList);
-    
-    // }
+        Console.WriteLine("-------Other user watch list-----"+otherUserWatchList.Count());
+
+        //Console.WriteLine("-------Count-----"+MatchCount);
+        Console.WriteLine("------;-match-----"+Match.Count());*/
+      }
+
+      return View(allUsers);
+    } 
   }
 }
-
-//  public ActionResult Details(int id)
-//     {
-//       var thisItem = _db.Items
-//           .Include(item => item.JoinEntities)
-//           .ThenInclude(join => join.Category)
-//           .FirstOrDefault(item => item.ItemId == id);
-//       return View(thisItem);
-//     }
-
-
-// IdentityResult result = await userManager.UpdateAsync(user);
-// if (result.Succeeded)
-// return RedirectToAction("Index");
-// else
-// Errors(result);
-// }
-
-    // public async Task<ActionResult> Edit(int id)
-    // {
-    //   var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-    //   var currentUser = await _userManager.FindByIdAsync(userId);
-    //   var thisItem = _db.Items
-    //       .Where(entry => entry.User.Id == currentUser.Id)
-    //       .FirstOrDefault(item => item.ItemId == id);
-    //   if (thisItem == null)
-    //   {
-    //     return RedirectToAction("Details", new {id = id});
-    //   }
-    //   ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name"); 
-    //   return View(thisItem);
-    // }
-
-
-    // [HttpPost]
-    // public ActionResult Edit(Item item, int CategoryId)
-    // {
-    //   if (CategoryId != 0)
-    //   {
-    //     _db.CategoryItem.Add(new CategoryItem() { CategoryId = CategoryId, ItemId = item.ItemId });
-    //   }
-    //   _db.Entry(item).State = EntityState.Modified;
-    //   _db.SaveChanges();
-    //   return RedirectToAction("Index");
-    // }
+    //    

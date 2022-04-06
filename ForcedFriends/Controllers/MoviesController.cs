@@ -53,7 +53,7 @@ namespace ForcedFriends.Controllers
         }
         [Authorize]
         [HttpPost]
-        public async Task<ActionResult> AddMovie(int Id)
+        public  ActionResult AddMovie(int Id)
         {
           var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
           //var currentUser = await _userManager.FindByIdAsync(userId);
