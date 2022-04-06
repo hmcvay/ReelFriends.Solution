@@ -73,3 +73,46 @@ body {
 .poster {
   max-width: 50%;
 }
+
+/* OUR CUSTOM CSS BELOW; AUTO GENERATED CSS ABOVE */
+
+body {
+  background-color: #ffcee9;
+}
+
+.content-container {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+#login {
+  font-family: monospace;
+  border-radius: 20px;
+  border: 2px solid white;
+  background-color: #afe9ff !important;
+  color: white;
+  font-size: 30pt !important;
+}
+
+#register {
+  font-family: monospace;
+  border-radius: 20px;
+  border: 2px solid white;
+  background-color: #afe9ff !important;
+  color: white;
+  font-size: 30pt !important;
+}
+
+/* .button {
+  text-align: center;
+  align-items: center;
+  border: 2px solid white;
+  width: 150px;
+  height: 50px;
+  border-radius: 20%;
+  background-color: red;
+} */

@@ -10,11 +10,15 @@
 <hr />
 @using (Html.BeginForm())
 {
+  <div class="form-group">
     @Html.LabelFor(m => m.UserName)
     @Html.TextBoxFor(m => m.UserName, new {@class= "form-control", placeholder = "Username", required = "required"})
-
+  </div>
+  <div class="form-group">
     @Html.LabelFor(m => m.Password)
     @Html.PasswordFor(m => m.Password, new {@class= "form-control", placeholder = "Password", required = "required"})
-
+  </div>
+  <div class="form-group">
     <input type="submit" value="Log in" class="btn btn-default" />
+  </div>
 }

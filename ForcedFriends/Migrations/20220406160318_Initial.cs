@@ -161,7 +161,7 @@ namespace ForcedFriends.Migrations
                 name: "Movies",
                 columns: table => new
                 {
-                    MovieId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
                     Release_Date = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
@@ -172,7 +172,7 @@ namespace ForcedFriends.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Movies", x => x.MovieId);
+                    table.PrimaryKey("PK_Movies", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Movies_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
@@ -185,14 +185,15 @@ namespace ForcedFriends.Migrations
                 name: "ApplicationUserMovies",
                 columns: table => new
                 {
-                    ApplicationUserMovieId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ApplicationUserMovieId = table.Column<int>(type: "int", nullable: false),
                     ApplicationUserId = table.Column<string>(type: "varchar(255) CHARACTER SET utf8mb4", nullable: true),
-                    MovieId = table.Column<int>(type: "int", nullable: false)
+                    MovieId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApplicationUserMovies", x => x.ApplicationUserMovieId);
+                    table.PrimaryKey("PK_ApplicationUserMovies", x => x.Id);
                     table.ForeignKey(
                         name: "FK_ApplicationUserMovies_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
@@ -203,8 +204,8 @@ namespace ForcedFriends.Migrations
                         name: "FK_ApplicationUserMovies_Movies_MovieId",
                         column: x => x.MovieId,
                         principalTable: "Movies",
-                        principalColumn: "MovieId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

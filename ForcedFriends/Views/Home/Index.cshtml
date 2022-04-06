@@ -1,8 +1,15 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+  Layout = "_Layout";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row justify-content-md-center">
+  <div class="col-4">
+    <div class="content-container">
+      <div> PUT LOGO HERE </div>
+    </div>
+  </div>
+  <div class="col-4">
+  <div class="content-container">
+    <button class="btn btn-primary" id="login">@Html.ActionLink("Login", "Login", "Account")</button>
+    <button class="btn btn-primary" id="register">@Html.ActionLink("Register", "Register", "Account")</button>
+  </div>
 </div>

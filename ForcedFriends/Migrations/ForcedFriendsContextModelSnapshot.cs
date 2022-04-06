@@ -95,17 +95,20 @@ namespace ForcedFriends.Migrations
 
             modelBuilder.Entity("ForcedFriends.Models.ApplicationUserMovie", b =>
                 {
-                    b.Property<int>("ApplicationUserMovieId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
-                    b.Property<int>("MovieId")
+                    b.Property<int>("ApplicationUserMovieId")
                         .HasColumnType("int");
 
-                    b.HasKey("ApplicationUserMovieId");
+                    b.Property<int?>("MovieId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
 
@@ -116,7 +119,7 @@ namespace ForcedFriends.Migrations
 
             modelBuilder.Entity("ForcedFriends.Models.Movie", b =>
                 {
-                    b.Property<int>("MovieId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -138,7 +141,7 @@ namespace ForcedFriends.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.HasKey("MovieId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
 
@@ -281,9 +284,7 @@ namespace ForcedFriends.Migrations
 
                     b.HasOne("ForcedFriends.Models.Movie", "Movie")
                         .WithMany()
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MovieId");
 
                     b.Navigation("Movie");
                 });
