@@ -5,27 +5,39 @@
 @model ApplicationUser
 @using System.Security.Claims
 
-<div class="content-container">
-    @if (User.Identity.IsAuthenticated)
-        {
-        <p>Hello @Html.DisplayFor(m => m.Name)!</p>
+<div class="profile-headers">
+    <div><h1>Your Profile</h1></div>
+    <div><h1>Your Matches</h1></div>
+</div>
+<div class="user-profile">
+    
+    <div class="your-profile">
+        @if (User.Identity.IsAuthenticated)
+            {
+            <p><span class="big">Hello @Html.DisplayFor(m => m.Name)!</span></p>
 
-        <p>Username: @User.Identity.Name</p> 
-        <p>Bio: @Html.DisplayFor(m => m.Bio)</p> 
-        <p>Birthday: @Html.DisplayFor(m=>m.Birthday)</p> 
+            <p><span class="big">Username:</span> @User.Identity.Name</p> 
+            <p><span class="big">Bio:</span> @Html.DisplayFor(m => m.Bio)</p> 
+            <p><span class="big">Birthday:</span> @Html.DisplayFor(m=>m.Birthday)</p> 
 
-        <button class="btn">@Html.ActionLink("Edit", "Edit")</button>
+            <button class="editButton">@Html.ActionLink("Edit", "Edit")</button>
 
 
-        @using (Html.BeginForm("LogOff", "Account"))
-        {
-            <input type="submit" class="btn btn-default" value="Log out" />
-        }
-        }
-        else
-        {
-            <button class="btn btn-primary" id="login">@Html.ActionLink("Register", "Register")</button>
-            <button class="btn btn-primary" id="login">@Html.ActionLink("Login", "Login")</button>
-        }
+            @using (Html.BeginForm("LogOff", "Account"))
+            {
+                <input type="submit" class="editButton" value="Log out" />
+            }
+            }
+            else
+            {
+                <button class="btn btn-primary" id="login">@Html.ActionLink("Register", "Register")</button>
+                <button class="btn btn-primary" id="login">@Html.ActionLink("Login", "Login")</button>
+            }
+    </div>    
+    <div class="your-matches">
+        <div>
+            <!-- foreach match display here -->
+        </div>
+    </div>
 </div>
 <!-- @Html.DisplayFor(m => m.Birthday) -->

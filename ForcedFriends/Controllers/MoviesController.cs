@@ -53,24 +53,28 @@ namespace ForcedFriends.Controllers
         }
         [Authorize]
         [HttpPost]
-        public async Task<ActionResult> AddMovie(int Id)
+        public ActionResult AddMovie(int Id)
         {
           var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-          //var currentUser = await _userManager.FindByIdAsync(userId);
           _db.ApplicationUserMovies.Add(new ApplicationUserMovie() { MovieId = Id, ApplicationUserId = userId });
           _db.SaveChanges();
           return RedirectToAction("GetWatchList");
         }
-
-
-
-    [HttpGet]
-    public ActionResult GetWatchList()
-    {
-      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      var watchList = _db.ApplicationUserMovies.Where(m => m.ApplicationUserId == userId).ToList();
-      return View(watchList);
-    }
-
+        [Authorize]
+        [HttpGet]
+        public ActionResult GetWatchList()
+        {
+          var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+          var watchList = _db.ApplicationUserMovies.Where(m => m.ApplicationUserId == userId).ToList();
+          return View(watchList);
+        }
+        [HttpPost]
+        public ActionResult DeleteMovie(int joinId)
+        {
+          var joinEntry = _db.ApplicationUserMovies.FirstOrDefault(entry => entry.ApplicationUserMovieId == joinId);
+          _db.ApplicationUserMovies.Remove(joinEntry);
+          _db.SaveChanges();
+          return RedirectToAction("Index");
+        }
     }
 }

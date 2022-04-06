@@ -6,7 +6,7 @@
     @foreach (Movie movie in Model)
     {
       <div>
-        <a href="@Url.Action("Details", "Movies", new {id = movie.Id})">
+        <a href="@Url.Action("Details", "Movies", new { id = movie.Id })">
         <img class="movie-tile" src="https://image.tmdb.org/t/p/w1280/@movie.Poster_Path"> 
         </a>
       </div>
