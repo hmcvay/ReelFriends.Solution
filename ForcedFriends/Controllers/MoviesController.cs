@@ -24,10 +24,23 @@ namespace ForcedFriends.Controllers
           _userManager = userManager;
           _db = db;
         } 
+
         public IActionResult Index()
         {
-            var allMovies = Movie.GetMovies(EnvironmentVariables.apiKey);
+          var allMovies = Movie.GetMovies(EnvironmentVariables.apiKey);
+          if (!_db.Movies.Any())
+          {
+            foreach(var movie in allMovies )
+            {
+              _db.Movies.Add(movie);
+              _db.SaveChanges();
+            }
+            List<Movie> movieModel=_db.Movies.ToList();
+              return View(movieModel);
+          }
+          else{
             return View(allMovies);
+          }
         }
 
         public async Task <ActionResult> Details(int id)
@@ -40,14 +53,24 @@ namespace ForcedFriends.Controllers
         }
         [Authorize]
         [HttpPost]
-        public async Task<ActionResult> AddMovie(Movie movie, string Id)
+        public async Task<ActionResult> AddMovie(int Id)
         {
           var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-          var currentUser = await _userManager.FindByIdAsync(userId);
-          _db.ApplicationUserMovies.Add(new ApplicationUserMovie() {ApplicationUserId = Id, Id = movie.Id });
-          // Console.Write("ApplicationUserId : " +ApplicationUserId);
+          //var currentUser = await _userManager.FindByIdAsync(userId);
+          _db.ApplicationUserMovies.Add(new ApplicationUserMovie() { MovieId = Id, ApplicationUserId = userId });
           _db.SaveChanges();
-          return RedirectToAction("Index");
+          return RedirectToAction("GetWatchList");
         }
+
+
+
+    [HttpGet]
+    public ActionResult GetWatchList()
+    {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var watchList = _db.ApplicationUserMovies.Where(m => m.ApplicationUserId == userId).ToList();
+      return View(watchList);
+    }
+
     }
 }
