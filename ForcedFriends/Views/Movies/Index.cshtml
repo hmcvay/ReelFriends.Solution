@@ -1,18 +1,15 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-</div>
-<h1>All Movies:</h1>
-
-<ol>
-@foreach (Movie movie in Model)
-{
-    <ul>
-        <li>@Html.ActionLink($"{movie.Title}", "Details", new {id = movie.Id})</li>
-    </ul>
-    <br>
-}
-</ol>
+<div class="page-content">
+  <div class="movie-container">
+    @foreach (Movie movie in Model)
+    {
+      <div>
+        <a href="@Url.Action("Details", "Movies", new {id = movie.Id})">
+        <img class="movie-tile" src="https://image.tmdb.org/t/p/w1280/@movie.Poster_Path"> 
+        </a>
+      </div>
+    }
+  </div>
+<div>
