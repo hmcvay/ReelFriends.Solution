@@ -7,6 +7,10 @@ namespace ForcedFriends.Models
 {
   public class Movie
   {
+    public Movie()
+    {
+      this.JoinEntities = new HashSet<ApplicationUserMovie>();
+    }
     public int Id { get; set; }
     //public int MovieName { get; set; }
     public string Title { get; set; }
@@ -15,7 +19,8 @@ namespace ForcedFriends.Models
     public string Tagline { get; set; }
     public string Overview { get; set; }
     public string Poster_Path { get; set; }
-    public virtual ApplicationUser ApplicationUser {get;set;}
+   // public virtual ApplicationUser ApplicationUser {get;set;}
+    public virtual ICollection<ApplicationUserMovie> JoinEntities { get; set; }
 
     public static List<Movie> GetMovies(string apiKey)
     {

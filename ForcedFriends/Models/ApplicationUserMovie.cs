@@ -8,9 +8,10 @@ namespace ForcedFriends.Models
   {
     public int ApplicationUserMovieId { get; set; }
     public string ApplicationUserId { get; set;}
-    public int Id { get; set; }
+  //public int Id { get; set; }
+   public int MovieId { get; set; }
 
     public virtual Movie Movie { get; set; }
-    // public virtual ApplicationUser ApplicationUser {get;set;}
+    public virtual ApplicationUser ApplicationUser {get;set;}
   }
 }

@@ -5,6 +5,13 @@ using System.Threading.Tasks;
 using ForcedFriends.ViewModels;
 using System;
 using System.Security.Claims;
+using System.Linq;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+
+
 
 namespace ForcedFriends.Controllers
 {
@@ -86,8 +93,31 @@ namespace ForcedFriends.Controllers
       IdentityResult result = await _userManager.UpdateAsync(currentUser);
       return RedirectToAction("Index");
     }
+
+    //     [HttpGet]
+    // public ActionResult GetWatchList()
+    // {
+    //   var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    //  // var watchList = _db.ApplicationUserMovies.Where(m => m.ApplicationUserId == userId).ToList();
+    //         var thisUser = _db.ApplicationUsers
+    //       .Include(m => m.JoinEntities)
+    //       .ThenInclude(m => m.Movie)
+    //       .FirstOrDefault(m => m.ApplicationUserId == userId);
+    //   return View(thisUser);
+    //   //return View(watchList);
+    
+    // }
   }
 }
+
+//  public ActionResult Details(int id)
+//     {
+//       var thisItem = _db.Items
+//           .Include(item => item.JoinEntities)
+//           .ThenInclude(join => join.Category)
+//           .FirstOrDefault(item => item.ItemId == id);
+//       return View(thisItem);
+//     }
 
 
 // IdentityResult result = await userManager.UpdateAsync(user);

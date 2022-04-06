@@ -52,6 +52,23 @@ namespace ForcedFriends.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Movies",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Title = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    Release_Date = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    Tagline = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    Overview = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    Poster_Path = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Movies", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -158,30 +175,6 @@ namespace ForcedFriends.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Movies",
-                columns: table => new
-                {
-                    MovieId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Release_Date = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Tagline = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Overview = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Poster_Path = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    ApplicationUserId = table.Column<string>(type: "varchar(255) CHARACTER SET utf8mb4", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Movies", x => x.MovieId);
-                    table.ForeignKey(
-                        name: "FK_Movies_AspNetUsers_ApplicationUserId",
-                        column: x => x.ApplicationUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ApplicationUserMovies",
                 columns: table => new
                 {
@@ -203,7 +196,7 @@ namespace ForcedFriends.Migrations
                         name: "FK_ApplicationUserMovies_Movies_MovieId",
                         column: x => x.MovieId,
                         principalTable: "Movies",
-                        principalColumn: "MovieId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -253,11 +246,6 @@ namespace ForcedFriends.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Movies_ApplicationUserId",
-                table: "Movies",
-                column: "ApplicationUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
