@@ -5,30 +5,27 @@
 @model ApplicationUser
 @using System.Security.Claims
 
+<div class="content-container">
+    @if (User.Identity.IsAuthenticated)
+        {
+        <p>Hello @Html.DisplayFor(m => m.Name)!</p>
 
-<h2>Authentication with Identity</h2>
-<hr />
-@if (User.Identity.IsAuthenticated)
-{
-    <p>Hello @Html.DisplayFor(m => m.Name)!</p>
+        <p>Username: @User.Identity.Name</p> 
+        <p>Bio: @Html.DisplayFor(m => m.Bio)</p> 
+        <p>Birthday: @Html.DisplayFor(m=>m.Birthday)</p> 
 
-    <p>Username: @User.Identity.Name</p> 
-    <p>Bio: @Html.DisplayFor(m => m.Bio)</p> 
-    <p>Birthday: @Html.DisplayFor(m=>m.Birthday)</p> 
-
-    <p>@Html.ActionLink("Edit", "Edit")</p>
+        <button class="btn">@Html.ActionLink("Edit", "Edit")</button>
 
 
-    @using (Html.BeginForm("LogOff", "Account"))
-    {
-        <input type="submit" class="btn btn-default" value="Log out" />
-    }
-}
-else
-{
-    <p>@Html.ActionLink("Register", "Register")</p>
-    <p>@Html.ActionLink("Log in", "Login")</p>
-}
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
-
+        @using (Html.BeginForm("LogOff", "Account"))
+        {
+            <input type="submit" class="btn btn-default" value="Log out" />
+        }
+        }
+        else
+        {
+            <button class="btn btn-primary" id="login">@Html.ActionLink("Register", "Register")</button>
+            <button class="btn btn-primary" id="login">@Html.ActionLink("Login", "Login")</button>
+        }
+</div>
 <!-- @Html.DisplayFor(m => m.Birthday) -->

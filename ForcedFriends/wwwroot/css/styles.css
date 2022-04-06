@@ -5,8 +5,13 @@ a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
+
 }
 
+nav{
+  border-bottom-left-radius:12px;
+  border-bottom-right-radius:12px;   
+}
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
@@ -70,6 +75,80 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
+
+
+/* OUR CUSTOM CSS BELOW; AUTO GENERATED CSS ABOVE */
+
 .poster {
-  max-width: 50%;
+  max-width: 300px;
+  border-radius: 5px;
+}
+
+body {
+  background-color: #ffcee9;
+}
+
+.content-container {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+
+
+.btn{
+  font-family: monospace !important;
+  border-radius: 20px!important;
+  border: 2px solid white!important;
+  background-color: #afe9ff !important;
+  color: white!important;
+  font-size: 30pt !important;
+}
+
+h5{
+  max-width: 65%;
+  text-align: justify;
+}
+
+#centered{
+  text-align: center;
+}
+
+.movie-container {
+  width: 1040px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.movie-tile {
+  width: 200px;
+  height: 315px;
+  border: 1px solid white;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.page-content {
+  
+  /* width: 100%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row{
+  width: 98%
 }

@@ -3,14 +3,16 @@ using System;
 using ForcedFriends.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ForcedFriends.Migrations
 {
     [DbContext(typeof(ForcedFriendsContext))]
-    partial class ForcedFriendsContextModelSnapshot : ModelSnapshot
+    [Migration("20220406160318_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -123,6 +125,9 @@ namespace ForcedFriends.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
                     b.Property<string>("Overview")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -140,9 +145,7 @@ namespace ForcedFriends.Migrations
 
                     b.HasKey("Id");
 
-
                     b.HasIndex("ApplicationUserId");
-
 
                     b.ToTable("Movies");
                 });
@@ -277,24 +280,24 @@ namespace ForcedFriends.Migrations
 
             modelBuilder.Entity("ForcedFriends.Models.ApplicationUserMovie", b =>
                 {
-                    b.HasOne("ForcedFriends.Models.ApplicationUser", "ApplicationUser")
+                    b.HasOne("ForcedFriends.Models.ApplicationUser", null)
                         .WithMany("JoinEntities")
                         .HasForeignKey("ApplicationUserId");
 
                     b.HasOne("ForcedFriends.Models.Movie", "Movie")
-
                         .WithMany()
                         .HasForeignKey("MovieId");
 
-                        .WithMany("JoinEntities")
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Movie");
+                });
 
+            modelBuilder.Entity("ForcedFriends.Models.Movie", b =>
+                {
+                    b.HasOne("ForcedFriends.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
 
                     b.Navigation("ApplicationUser");
-
-                    b.Navigation("Movie");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -349,11 +352,6 @@ namespace ForcedFriends.Migrations
                 });
 
             modelBuilder.Entity("ForcedFriends.Models.ApplicationUser", b =>
-                {
-                    b.Navigation("JoinEntities");
-                });
-
-            modelBuilder.Entity("ForcedFriends.Models.Movie", b =>
                 {
                     b.Navigation("JoinEntities");
                 });

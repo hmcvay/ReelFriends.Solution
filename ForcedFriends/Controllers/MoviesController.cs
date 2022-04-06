@@ -62,6 +62,8 @@ namespace ForcedFriends.Controllers
           return RedirectToAction("GetWatchList");
         }
 
+
+
     [HttpGet]
     public ActionResult GetWatchList()
     {
@@ -69,5 +71,6 @@ namespace ForcedFriends.Controllers
       var watchList = _db.ApplicationUserMovies.Where(m => m.ApplicationUserId == userId).ToList();
       return View(watchList);
     }
+
     }
 }
