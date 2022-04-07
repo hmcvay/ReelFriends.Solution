@@ -154,7 +154,7 @@ body {
 
 #login{
   width: 100px;
-  font-family: monospace !important;
+  font-family: 'Paytone One', sans-serif !important;
   border-radius: 20px!important;
   border: 2px solid #fbea36!important;
   background-color: #18bbc8 !important;
@@ -165,7 +165,7 @@ body {
 
 #register{
   width: 150px;
-  font-family: monospace !important;
+  font-family: 'Paytone One', sans-serif !important;
   border-radius: 20px!important;
   border: 2px solid #fbea36!important;
   background-color: #18bbc8 !important;
@@ -217,7 +217,7 @@ body {
 
 
 .btn{
-  font-family: monospace !important;
+  font-family: 'Paytone One', sans-serif !important;
   border-radius: 20px!important;
   border: 2px solid #fbea36!important;
   background-color: #18bbc8 !important;
@@ -227,7 +227,7 @@ body {
 }
 
 .editButton{
-  font-family: monospace;
+  font-family: 'Paytone One', sans-serif;
   border-radius: 10px;
   border: 2px solid white;
   background-color: #dc539b;
@@ -297,7 +297,7 @@ h5{
 } */
 
 .profile-headers {
-  font-family: monospace;
+  font-family: 'Paytone One', sans-serif;
   color: white;
   display: flex;
   flex-direction: row;
