@@ -5,8 +5,17 @@
 @*@model ForcedFriends.Models.Movie*@
 @using ForcedFriends.Models;
 @using System.Security.Claims;
-<div class="page-content">
 
+<div class="watchlist-container">
+  <div><img src="~/img/yourMovies.png" class="your-movies" />
+</div>
+
+<div class="logo-parent">
+  @* <a href="@Url.Action("Index", "Account")"> *@
+  <img class="logo-ball" src="~/img/smallLogo.png"> 
+</div>
+
+<div class="page-content">
     @if (User.Identity.IsAuthenticated)
     {
       @if(@Model.Count == 0)
