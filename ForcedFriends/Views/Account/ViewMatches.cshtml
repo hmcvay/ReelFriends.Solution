@@ -2,7 +2,12 @@
   Layout = "_Layout";
 }
 @using ForcedFriends.Models
+<div class="logo-parent">
+  @* <a href="@Url.Action("Index", "Account")"> *@
+  <img class="logo-ball" src="~/img/smallLogo.png"> 
+</div>
 <div class="match-container">
+  <div><img src="~/img/yourMatches.png" class="your-match-logo" />
   @foreach(ApplicationUser user in Model)
   {
     @if (@user.MatchCount > 2)
@@ -17,7 +22,7 @@
         </div>
       </div>
     }
-    else if(@user.MatchCount > 0 && @user.MatchCount < 2)
+    else if(@user.MatchCount > 0 && @user.MatchCount <= 2)
     {
       <div class="card" style="background-color:#CCCCFF">
         <div class="card-body">

@@ -361,6 +361,11 @@ h5{
   border-radius: 15px;
 }
 
+.your-match-logo {
+  width: 800px;
+  margin: 40px;
+}
+
 .big {
   font-size: 24pt;
 }
