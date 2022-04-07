@@ -22,9 +22,9 @@ namespace ForcedFriends.Models
    // public virtual ApplicationUser ApplicationUser {get;set;}
     public virtual ICollection<ApplicationUserMovie> JoinEntities { get; set; }
 
-    public static List<Movie> GetMovies(string apiKey)
+    public static List<Movie> GetMovies(string apiKey, int pageNumber)
     {
-      var apiCallTask = ApiHelper.ApiCall(apiKey);
+      var apiCallTask = ApiHelper.ApiCall(apiKey, pageNumber);
       var result = apiCallTask.Result;
       List<Movie> movieNameList= new List<Movie>{} ;
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);

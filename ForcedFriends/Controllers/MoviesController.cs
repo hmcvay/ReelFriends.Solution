@@ -27,7 +27,7 @@ namespace ForcedFriends.Controllers
 
         public IActionResult Index()
         {
-          var allMovies = Movie.GetMovies(EnvironmentVariables.apiKey);
+          var allMovies = Movie.GetMovies(EnvironmentVariables.apiKey, 1);
           if (!_db.Movies.Any())
           {
             foreach(var movie in allMovies )
@@ -37,6 +37,40 @@ namespace ForcedFriends.Controllers
             }
             List<Movie> movieModel=_db.Movies.ToList();
               return View(movieModel);
+          }
+          else{
+            return View(allMovies);
+          }
+        }
+        public IActionResult Index2()
+        {
+          var allMovies = Movie.GetMovies(EnvironmentVariables.apiKey, 2);
+           if (!_db.Movies.Any())
+          {
+            foreach(var movie in allMovies )
+            {
+              _db.Movies.Add(movie);
+              _db.SaveChanges();
+            }
+            List<Movie> movieModel=_db.Movies.ToList();
+            return View(movieModel);
+          }
+          else{
+            return View(allMovies);
+          }
+        }
+        public IActionResult Index3()
+        {
+          var allMovies = Movie.GetMovies(EnvironmentVariables.apiKey, 3);
+          if (!_db.Movies.Any())
+          {
+            foreach(var movie in allMovies )
+            {
+              _db.Movies.Add(movie);
+              _db.SaveChanges();
+            }
+            List<Movie> movieModel=_db.Movies.ToList();
+            return View(movieModel);
           }
           else{
             return View(allMovies);
@@ -72,11 +106,15 @@ namespace ForcedFriends.Controllers
           return View(watchList);
         }
         [HttpPost]
-        public ActionResult DeleteMovie(int joinId)
+        public async Task<ActionResult> DeleteMovie(int joinId)
         {
-          var joinEntry = _db.ApplicationUserMovies.FirstOrDefault(entry => entry.ApplicationUserMovieId == joinId);
-          _db.ApplicationUserMovies.Remove(joinEntry);
-          _db.SaveChanges();
+          var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+          var currentUser = await _userManager.FindByIdAsync(userId);
+          if(userId == currentUser.Id){
+            var joinEntry = _db.ApplicationUserMovies.FirstOrDefault(entry => entry.ApplicationUserMovieId == joinId);
+            _db.ApplicationUserMovies.Remove(joinEntry);
+            _db.SaveChanges();
+          }
           return RedirectToAction("Index");
         }
     }

@@ -5,5 +5,5 @@
 
 @foreach(ApplicationUser user in Model)
 {
- <li>@user.UserName</li>
+ <li>@Html.ActionLink($"{user.UserName}", "Details", new { id = user.Id}) - Movie matches: @user.MatchCount</li>
 }

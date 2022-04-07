@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ForcedFriends.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,6 +31,7 @@ namespace ForcedFriends.Migrations
                     Birthday = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     Bio = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
                     ProfileImg = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    MatchCount = table.Column<int>(type: "int", nullable: false),
                     UserName = table.Column<string>(type: "varchar(256) CHARACTER SET utf8mb4", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "varchar(256) CHARACTER SET utf8mb4", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "varchar(256) CHARACTER SET utf8mb4", maxLength: 256, nullable: true),
