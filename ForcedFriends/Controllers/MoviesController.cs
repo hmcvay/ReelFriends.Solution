@@ -53,7 +53,10 @@ namespace ForcedFriends.Controllers
         }
         [Authorize]
         [HttpPost]
+
+
         public ActionResult AddMovie(int Id)
+
         {
           var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
           _db.ApplicationUserMovies.Add(new ApplicationUserMovie() { MovieId = Id, ApplicationUserId = userId });
