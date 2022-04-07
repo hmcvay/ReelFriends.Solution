@@ -45,36 +45,34 @@ namespace ForcedFriends.Controllers
         public IActionResult Index2()
         {
           var allMovies = Movie.GetMovies(EnvironmentVariables.apiKey, 2);
-           if (!_db.Movies.Any())
-          {
+         
             foreach(var movie in allMovies )
             {
+              //if(!((_db.Movies.ToList()).Contains(movie)))
+             if(!(_db.Movies.Any(u => u.Id == movie.Id)))
+              {
               _db.Movies.Add(movie);
               _db.SaveChanges();
+              }
             }
             List<Movie> movieModel=_db.Movies.ToList();
-            return View(movieModel);
-          }
-          else{
             return View(allMovies);
-          }
+
         }
         public IActionResult Index3()
         {
           var allMovies = Movie.GetMovies(EnvironmentVariables.apiKey, 3);
-          if (!_db.Movies.Any())
-          {
             foreach(var movie in allMovies )
             {
+              //if(!((_db.Movies.ToList()).Contains(movie)))
+             if(!(_db.Movies.Any(u => u.Id == movie.Id)))
+              {
               _db.Movies.Add(movie);
               _db.SaveChanges();
+              }
             }
             List<Movie> movieModel=_db.Movies.ToList();
-            return View(movieModel);
-          }
-          else{
             return View(allMovies);
-          }
         }
 
         public async Task <ActionResult> Details(int id)
@@ -115,7 +113,7 @@ namespace ForcedFriends.Controllers
             _db.ApplicationUserMovies.Remove(joinEntry);
             _db.SaveChanges();
           }
-          return RedirectToAction("Index");
+          return RedirectToAction("GetWatchList");
         }
     }
 }

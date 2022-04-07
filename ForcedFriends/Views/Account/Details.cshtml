@@ -2,9 +2,9 @@
   Layout = "_Layout";
 }
 @model ApplicationUser
-
+<div class="content-container">
 <h3>@Model.UserName</h3>
-<h3>@Model.Birthday</h3>
+<h3>@Html.Label(@Model.Birthday.ToShortDateString())</h3>
 <h3>@Model.Bio</h3>
 <div class="movie-container">
           @foreach(var movie in Model.JoinEntities)
@@ -15,3 +15,4 @@
               </a>
             </div>
           }
+</div>

@@ -3,14 +3,27 @@ for details on configuring this project to bundle and minify static web assets. 
 
 body{
   color: white;
+  font-family: 'Paytone One', sans-serif;
 }
 
 .card{
   color: #1c1c1c;
+  margin-bottom: 10px;
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.card-title a{
+  color: #1c1c1c !important;
+}
+
+.navbar-light .navbar-nav .nav-link{
+  color: white !important;
 }
 
 a.navbar-brand {
-  font-family: sans-serif;
+  font-family: 'Paytone One', sans-serif;
   font-weight: bold;
   color: white!important;
   white-space: normal;
@@ -19,11 +32,14 @@ a.navbar-brand {
 
 }
 
-li .nav-item {
+.nav-item {
   color: white!important;
 }
 
-
+#navlogo{
+  padding-left: 10px;
+  max-width: 175px !important;
+}
 
 nav{
   color: white!important;
@@ -244,6 +260,7 @@ h5{
   flex-direction: row;
   flex-wrap: wrap;
   gap: 5px;
+  padding-top: 10px;
 }
 
 .movie-tile {
