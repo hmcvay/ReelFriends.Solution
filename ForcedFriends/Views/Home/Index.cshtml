@@ -3,17 +3,32 @@
 }
 <div class="splash-page">
   <div class="row justify-content-md-center">
-    <div class="col-4">
+    <div class="col-2">
+      <div class="img-container">
+        <div class="filler1"></div>
+        <div><img src="~/img/tvColumn.png" class="tv-column"/></div>
+      </div>
+    </div>
+    <div class="col-5">
       <div class="content-container">
         <div> <img id="logo" src="~/img/logoWIP.png" alt="reel friends logo"> </div>
       </div>
     </div>
-    <div class="col-4">
-      <div class="content-container">
+    <div class="col-2">
+      <div class="img-container">
+        <div class="filler2"></div>
         <button class="btn btn-primary" id="login" >@Html.ActionLink("Login", "Login", "Account")</button>
-        <button class="btn btn-primary" id="register">@Html.ActionLink("Register", "Register", "Account")</button>
+        <div><img src="~/img/tallColumn.png" class="tall-cloumn"/></div>
+        @* <button class="btn btn-primary" id="register">@Html.ActionLink("Register", "Register", "Account")</button> *@
       </div>
-  </div>
+    </div>
+    <div class="col-2">
+      <div class="img-container">
+        <div class="filler3"></div>
+        <button class="btn btn-primary" id="register">@Html.ActionLink("Register", "Register", "Account")</button>
+        <div><img src="~/img/shortColumn.png"/></div>
+      </div>
+    </div>
   <div class="checker-container">
     <div class="checker-img"><img src="~/img/checker2.png" /></div>
   </div>

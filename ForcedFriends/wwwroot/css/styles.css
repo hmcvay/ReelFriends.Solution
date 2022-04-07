@@ -10,36 +10,36 @@ body{
 }
 
 a.navbar-brand {
+  font-family: sans-serif;
+  font-weight: bold;
+  color: white!important;
   white-space: normal;
   text-align: center;
   word-break: break-all;
 
 }
 
+li .nav-item {
+  color: white!important;
+}
+
+
+
 nav{
+  color: white!important;
   border-bottom-left-radius:12px;
   border-bottom-right-radius:12px;   
 }
 /* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
-}
+
 
 .bg-white{
-  background-color: #f5d636 !important;
+  background-color: #734e9d!important;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
+
+
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -97,27 +97,27 @@ body {
 }
 
 body {
-  background-color: #1c1c1c;
+  background-color: #212529;
   width: 100%;
 }
 
 /* SPLASH PAGE */
 
 #logo{
-  max-width: 100%;
+  width: 600px;
 }
 
 #id {
   width: 200px;
 }
 
-.splash-page {
+/* .splash-page {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-}
+} */
 
 .checker-container {
   display: flex;
@@ -129,13 +129,61 @@ body {
   bottom: 0;
 }
 
+.tv-column {
+  height: 290px;
+}
+
+.img-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+#login{
+  width: 100px;
+  font-family: monospace !important;
+  border-radius: 20px!important;
+  border: 2px solid #fbea36!important;
+  background-color: #18bbc8 !important;
+  color: white!important;
+  font-size: 20pt !important;
+  transition: none;
+}
+
+#register{
+  width: 150px;
+  font-family: monospace !important;
+  border-radius: 20px!important;
+  border: 2px solid #fbea36!important;
+  background-color: #18bbc8 !important;
+  color: white!important;
+  font-size: 20pt !important;
+  transition: none;
+}
+
+.filler1 {
+  width: 210px;
+  height: 265px;
+}
+
+.filler2 {
+  width: 210px;
+  height: 165px;
+}
+
+.filler3 {
+  width: 10px;
+  height: 319px;
+}
+
 .content-container {
   height: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  /* gap: -10px; */
 }
 
 .page {
@@ -159,10 +207,10 @@ body {
 .btn{
   font-family: monospace !important;
   border-radius: 20px!important;
-  border: 2px solid white!important;
-  background-color: #3cbcc9 !important;
+  border: 2px solid #fbea36!important;
+  background-color: #18bbc8 !important;
   color: white!important;
-  font-size: 30pt !important;
+  font-size: 20pt !important;
   transition: none;
 }
 
