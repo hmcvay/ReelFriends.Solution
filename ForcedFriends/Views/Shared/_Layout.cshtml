@@ -3,14 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ReelFriends</title>
+    <title>@ViewData["Title"]ReelFriends</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/styles.css" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ReelFriends</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +21,7 @@
                         <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Index">MovieList</a>
                     </li>
                     <li class="nav-item">
-                         <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="GetWatchList">WatchList</a>
+                      <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="GetWatchList">WatchList</a>
                     </li>  
                     <li class="nav-item">
                          <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="ViewMatches">Match List</a>
@@ -30,12 +29,16 @@
                 </ul>      
                 <ul class="navbar-nav flex-grow">
                     <li class="navbar-item">
-                        <a class="nav-item nav-link text-dark" href="/Account">Account</a>
+                      @if (User.Identity.IsAuthenticated)
+                        {
+                          <a class="nav-item nav-link text-dark" href="/Account">@User.Identity.Name's Account</a>
+                        }
+                        else
+                        {
+                          <a class="nav-item nav-link text-dark" href="/Account">Account</a>
+                        }
                     </li>
                 </ul>
-
-           
-
             </div>
         </nav>
     </header>
@@ -45,7 +48,7 @@
         </main>
     @* </div> *@
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer text-muted">
         <div class="container">
             &copy; 2022 - ForcedFriends 
         </div>
