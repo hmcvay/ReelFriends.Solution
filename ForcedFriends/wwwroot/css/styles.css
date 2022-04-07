@@ -280,6 +280,10 @@ h5{
   width: 100px;
 }
 
+/* body .background {
+  background-image: url("~/img/gridBackground.png");
+} */
+
 .profile-headers {
   font-family: monospace;
   color: white;
@@ -317,6 +321,19 @@ h5{
 
 .big {
   font-size: 24pt;
+}
+
+.watchlist-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+  gap: 20px;
+}
+
+.your-movies {
+  width: 800px;
 }
 
 a {
