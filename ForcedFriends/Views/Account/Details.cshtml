@@ -2,16 +2,24 @@
   Layout = "_Layout";
 }
 @model ApplicationUser
+<div class="entire-page">
+  <div class="profile-container">
+    <img id="profile-img" src="~/img/@(Model.UserName).jpeg">
 
-<h3>@Model.UserName</h3>
-<h3>@Model.Birthday</h3>
-<h3>@Model.Bio</h3>
-<div class="movie-container">
-          @foreach(var movie in Model.JoinEntities)
-          {
-            <div class="each-movie">
-              <a href="@Url.Action("Details", "Movies", new { id = movie.MovieId })">
-                <img class="movie-tile" src="https://image.tmdb.org/t/p/w1280/@movie.Movie.Poster_Path"> 
-              </a>
-            </div>
-          }
+    <div class="user-properties">
+      <h3>@Model.UserName</h3>
+      <h3>@Html.Label(@Model.Birthday.ToShortDateString())</h3>
+      <h3>@Model.Bio</h3>
+    </div>
+  </div>
+  <div class="movie-container">
+    @foreach(var movie in Model.JoinEntities)
+    {
+      <div class="each-movie">
+        <a href="@Url.Action("Details", "Movies", new { id = movie.MovieId })">
+          <img class="movie-tile" src="https://image.tmdb.org/t/p/w1280/@movie.Movie.Poster_Path"> 
+        </a>
+      </div>
+    }
+  </div>
+</div>

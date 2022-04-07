@@ -2,8 +2,44 @@
   Layout = "_Layout";
 }
 @using ForcedFriends.Models
-
-@foreach(ApplicationUser user in Model)
-{
- <li>@Html.ActionLink($"{user.UserName}", "Details", new { id = user.Id}) - Movie matches: @user.MatchCount</li>
-}
+<div class="match-container">
+  @foreach(ApplicationUser user in Model)
+  {
+    @if (@user.MatchCount > 2)
+    {
+      <div class="card" style="background-color:#CCFFFF">
+        <div class="card-body">
+          <div class="card-container">
+            <div class="card-title">@Html.ActionLink($"{user.UserName}", "Details", new { id = user.Id})</div>
+            <p class ="card-text"> Movie matches: @user.MatchCount</p>
+            <div class="profile-photo"></div>
+          </div>
+        </div>
+      </div>
+    }
+    else if(@user.MatchCount > 0 && @user.MatchCount < 2)
+    {
+      <div class="card" style="background-color:#CCCCFF">
+        <div class="card-body">
+          <div class="card-container">
+            <div class="card-title">@user.UserName</div>
+            <p class ="card-text"> Movie matches: @user.MatchCount</p>
+            <!--<div class="profile-photo"><img src="~/img/@(user.UserName).jpeg" alt="profile img"/></div>-->
+          </div>
+        </div>
+      </div>
+    }
+    else if(@user.MatchCount == 0)
+    {
+      <div class="card" style="background-color:#CCAAFF">
+        <div class="card-body">
+          <div class="card-container">
+            <div class="card-title">*******</div>
+            <div>You have no movie matches with this user!</div>
+            <div class="profile-photo"></div>
+          </div>
+        </div>
+      </div>
+    }
+  }
+</div>

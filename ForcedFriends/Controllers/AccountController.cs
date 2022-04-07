@@ -106,7 +106,6 @@ namespace ForcedFriends.Controllers
       List<ApplicationUserMovie> otherUserWatchList = new List<ApplicationUserMovie>();
       foreach(var individualUser in allUsers)
       {
-        Console.WriteLine("++++Userid++++++++++"+individualUser.UserName);
         thisUserWatchList= _db.ApplicationUserMovies.Where(m => m.ApplicationUserId == userId).ToList();
         List<ApplicationUserMovie> movieMatchList = new List<ApplicationUserMovie>();
         if(individualUser.Id!=userId)
@@ -125,49 +124,8 @@ namespace ForcedFriends.Controllers
           individualUser.MatchCount = movieMatchList.Count;
         }
       }
-      return View(allUsers);
+      return View(allUsers.OrderByDescending(m => m.MatchCount));
     }
-
-    // [HttpGet]
-    // public ActionResult ViewMatches()
-    // {
-    //   // var allUsers = _userManager.Users.ToList();
-    //   var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-    //   List<ApplicationUser> allUsers = _userManager.Users.ToList();
-    //   Console.WriteLine(allUsers.Count);
-    //   List<ApplicationUserMovie> thisUserWatchList = new List<ApplicationUserMovie>{};
-    //   List<ApplicationUserMovie> otherUserWatchList = new List<ApplicationUserMovie>{};
-    //   foreach(var individualUser in allUsers)
-    //   {
-    //     Console.WriteLine("++++Userid++++++++++"+individualUser.UserName);
-    //     Console.WriteLine("++++Userid++++++++++"+individualUser.Id);
-    //     thisUserWatchList= _db.ApplicationUserMovies.Where(m => m.ApplicationUserId == userId).ToList();
-    //   /* if(individualUser.Id!=userId)
-    //     {
-    //         otherUserWatchList = _db.ApplicationUserMovies.Where(m => m.ApplicationUserId == individualUser.Id).ToList();
-    //     }
-    //     For(var items in thisUserWatchList )
-    //     {
-    //       otherUserWatchList.contain(items);
-    //       count++
-    //     }
-    //       display counter;
-    //       push this counter in an array;
-    //       eg if we have two users then the array will have two values and pick the highest of them;
-    //       */
-        
-    //     IEnumerable<ApplicationUserMovie> Match = otherUserWatchList.Intersect(thisUserWatchList);
-    //     var MatchCount = thisUserWatchList.Intersect(otherUserWatchList).Count();
-    //     Console.WriteLine("-------This user watch list-----"+thisUserWatchList.Count());
-
-    //     Console.WriteLine("-------Other user watch list-----"+otherUserWatchList.Count());
-
-    //     //Console.WriteLine("-------Count-----"+MatchCount);
-    //     Console.WriteLine("------;-match-----"+Match.Count());
-    //   }
-
-    //   return View(allUsers);
-    // }
     public ActionResult Details(string id)
     {
       var thisUser = _userManager.Users
@@ -179,4 +137,3 @@ namespace ForcedFriends.Controllers
     }
   }
 }
-    //

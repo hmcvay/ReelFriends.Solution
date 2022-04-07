@@ -1,0 +1,365 @@
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+body{
+  color: white;
+  background-image: url(../img/gridBackground.png);
+  background-size: 1000px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  font-family: 'Paytone One', sans-serif;
+}
+
+.card{
+  color: #1c1c1c;
+}
+
+a.navbar-brand {
+  font-family: 'Paytone One', sans-serif;
+  font-weight: bold;
+  color: white!important;
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+
+}
+
+li .nav-item {
+  color: white!important;
+}
+
+.navbar-light .navbar-nav .nav-link{
+  color: white !important;
+}
+
+#navlogo{
+  padding-left: 10px;
+  max-width: 175px !important;
+}
+
+nav{
+  color: white!important;
+  border-bottom-left-radius:12px;
+  border-bottom-right-radius:12px;   
+}
+/* Provide sufficient contrast against white background */
+
+
+.bg-white{
+  background-color: #734e9d!important;
+}
+
+
+
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+
+
+/* OUR CUSTOM CSS BELOW; AUTO GENERATED CSS ABOVE */
+
+.poster {
+  max-width: 300px;
+  border-radius: 5px;
+}
+
+body {
+  background-color: #212529;
+  width: 100%;
+}
+
+/* SPLASH PAGE */
+
+#logo{
+  width: 600px;
+}
+
+#id {
+  width: 200px;
+}
+
+/* .splash-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+} */
+
+.checker-container {
+  display: flex;
+  align-items: flex-end;
+}
+
+.cheker-img {
+  position: absolute;
+  bottom: 0;
+}
+
+.tv-column {
+  height: 290px;
+}
+
+.img-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+#login{
+  width: 100px;
+  font-family: monospace !important;
+  border-radius: 20px!important;
+  border: 2px solid #fbea36!important;
+  background-color: #18bbc8 !important;
+  color: white!important;
+  font-size: 20pt !important;
+  transition: none;
+}
+
+#register{
+  width: 150px;
+  font-family: monospace !important;
+  border-radius: 20px!important;
+  border: 2px solid #fbea36!important;
+  background-color: #18bbc8 !important;
+  color: white!important;
+  font-size: 20pt !important;
+  transition: none;
+}
+
+.filler1 {
+  width: 210px;
+  height: 265px;
+}
+
+.filler2 {
+  width: 210px;
+  height: 165px;
+}
+
+.filler3 {
+  width: 10px;
+  height: 319px;
+}
+
+.content-container {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* gap: -10px; */
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.each-movie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+
+
+.btn{
+  font-family: monospace !important;
+  border-radius: 20px!important;
+  border: 2px solid #fbea36!important;
+  background-color: #18bbc8 !important;
+  color: white!important;
+  font-size: 20pt !important;
+  transition: none;
+}
+
+.editButton{
+  font-family: monospace;
+  border-radius: 10px;
+  border: 2px solid white;
+  background-color: #dc539b;
+  color: white;
+  font-size: 15pt;
+  transition: none;
+}
+
+.editButton:hover{
+text-decoration: none;
+color: #be03be;
+}
+
+h5{
+  max-width: 65%;
+  text-align: justify;
+}
+
+#centered{
+  text-align: center;
+}
+
+.movie-container {
+  width: 1040px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.movie-tile {
+  width: 200px;
+  height: 315px;
+  border: 1px solid white;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.page-content {
+  
+  /* width: 100%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row{
+  width: 98%
+}
+
+.logo-parent {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  /* height: 800px; */
+}
+
+.logo-ball {
+  position: absolute;
+  left: 90%;
+  top: 80%;
+  width: 100px;
+}
+
+/* body .background {
+  background-image: url("~/img/gridBackground.png");
+} */
+
+.profile-headers {
+  font-family: monospace;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.user-profile {
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+}
+
+.your-profile {
+  background-color: #a0509e;
+  padding: 20px;
+  font-size: 14pt;
+  border: 2px solid white;
+  border-radius: 15px;
+  width: 400px;
+}
+
+.your-matches {
+  background-color: #f46f34;
+  width: 600px;
+  height: 300px;
+  border: 2px solid white;
+  border-radius: 15px;
+}
+
+.big {
+  font-size: 24pt;
+}
+
+.watchlist-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+  gap: 20px;
+}
+
+.your-movies {
+  width: 800px;
+}
+
+a {
+  color: white;
+}
+
+a:hover{
+  text-decoration: none;
+  color: #be03be;
+}
+
+.btn-primary:hover{
+  text-decoration: none !important; 
+  color: #be03be !important;
+  animation: none 0 none !important;
+}
+

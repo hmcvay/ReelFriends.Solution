@@ -3,14 +3,48 @@ for details on configuring this project to bundle and minify static web assets. 
 
 body{
   color: white;
+  font-family: 'Paytone One', sans-serif;
+}
+
+.match-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 40px;
 }
 
 .card{
   color: #1c1c1c;
+  margin-bottom: 10px;
+  width: 500px;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-photo {
+  height: 50px;
+  width: 50px;
+}
+
+.card-title a{
+  color: #1c1c1c !important;
+}
+
+.navbar-light .navbar-nav .nav-link{
+  color: white !important;
 }
 
 a.navbar-brand {
-  font-family: sans-serif;
+  font-family: 'Paytone One', sans-serif;
   font-weight: bold;
   color: white!important;
   white-space: normal;
@@ -19,11 +53,14 @@ a.navbar-brand {
 
 }
 
-li .nav-item {
+.nav-item {
   color: white!important;
 }
 
-
+#navlogo{
+  padding-left: 10px;
+  max-width: 175px !important;
+}
 
 nav{
   color: white!important;
@@ -140,6 +177,10 @@ body {
   
 }
 
+#index-button{
+  padding-top: 10px;
+}
+
 #login{
   width: 100px;
   font-family: monospace !important;
@@ -244,6 +285,7 @@ h5{
   flex-direction: row;
   flex-wrap: wrap;
   gap: 5px;
+  padding-top: 10px;
 }
 
 .movie-tile {
@@ -295,7 +337,7 @@ h5{
 
 .user-profile {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   /* align-items: center; */
   justify-content: space-around;
   width: 100%;
@@ -351,3 +393,29 @@ a:hover{
   animation: none 0 none !important;
 }
 
+#profile-img{
+  max-width: 350px;
+  border-radius: 50%;
+}
+
+.entire-page {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+
+}
+
+.profile-container {
+  display: flex;
+  flex: row;
+  gap: 50px;
+}
+
+.user-properties {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
