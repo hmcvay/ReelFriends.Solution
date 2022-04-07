@@ -266,6 +266,20 @@ h5{
   width: 98%
 }
 
+.logo-parent {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  /* height: 800px; */
+}
+
+.logo-ball {
+  position: absolute;
+  left: 90%;
+  top: 80%;
+  width: 100px;
+}
+
 .profile-headers {
   font-family: monospace;
   color: white;
