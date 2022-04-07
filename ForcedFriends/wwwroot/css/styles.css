@@ -98,6 +98,35 @@ body {
 
 body {
   background-color: #1c1c1c;
+  width: 100%;
+}
+
+/* SPLASH PAGE */
+
+#logo{
+  max-width: 100%;
+}
+
+#id {
+  width: 200px;
+}
+
+.splash-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.checker-container {
+  display: flex;
+  align-items: flex-end;
+}
+
+.cheker-img {
+  position: absolute;
+  bottom: 0;
 }
 
 .content-container {
@@ -243,6 +272,3 @@ a:hover{
   animation: none 0 none !important;
 }
 
-#logo{
-  max-width: 100%;
-}
