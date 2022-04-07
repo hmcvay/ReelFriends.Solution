@@ -6,12 +6,33 @@ body{
   font-family: 'Paytone One', sans-serif;
 }
 
+.match-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 40px;
+}
+
 .card{
   color: #1c1c1c;
   margin-bottom: 10px;
-  max-width: 50%;
-  display: flex;
+  width: 500px;
+  align-items: center;
   justify-content: center;
+}
+
+.profile-photo {
+  height: 50px;
+  width: 50px;
 }
 
 .card-title a{
@@ -154,6 +175,10 @@ body {
   flex-direction: column;
   align-items: center;
   
+}
+
+#index-button{
+  padding-top: 10px;
 }
 
 #login{
@@ -312,7 +337,7 @@ h5{
 
 .user-profile {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   /* align-items: center; */
   justify-content: space-around;
   width: 100%;
@@ -368,3 +393,29 @@ a:hover{
   animation: none 0 none !important;
 }
 
+#profile-img{
+  max-width: 350px;
+  border-radius: 50%;
+}
+
+.entire-page {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+
+}
+
+.profile-container {
+  display: flex;
+  flex: row;
+  gap: 50px;
+}
+
+.user-properties {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
