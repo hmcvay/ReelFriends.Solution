@@ -14,6 +14,7 @@ namespace ForcedFriends.Models
     public DateTime Birthday { get; set; }
     public string Bio { get; set; }
     public string ProfileImg { get; set; }
+    public int MatchCount {get;set;}
     public virtual ICollection<ApplicationUserMovie> JoinEntities {get;set;}
 
   }

@@ -6,10 +6,10 @@ namespace ForcedFriends.Models
 {
   public class ApiHelper
   {
-    public static async Task<string> ApiCall(string apiKey)
+    public static async Task<string> ApiCall(string apiKey, int pageNumber)
     {
       RestClient client = new RestClient("https://api.themoviedb.org/3/movie");
-      RestRequest request = new RestRequest($"popular?api_key={apiKey}&language=en-US&page=1",Method.GET);
+      RestRequest request = new RestRequest($"popular?api_key={apiKey}&language=en-US&page={pageNumber}",Method.GET);
       var response = await client.ExecuteTaskAsync(request);
       return response.Content;
     }

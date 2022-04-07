@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+@model ApplicationUser
+
+<h3>@Model.UserName</h3>
+<h3>@Model.Birthday</h3>
+<h3>@Model.Bio</h3>
+<div class="movie-container">
+          @foreach(var movie in Model.JoinEntities)
+          {
+            <div class="each-movie">
+              <a href="@Url.Action("Details", "Movies", new { id = movie.MovieId })">
+                <img class="movie-tile" src="https://image.tmdb.org/t/p/w1280/@movie.Movie.Poster_Path"> 
+              </a>
+            </div>
+          }
