@@ -2,6 +2,11 @@
 
 #### By Hayley McVay, Brenna Lavin, Tiffany Rodrigo, Will Greenberg, Jake Haley
 
+<br>
+
+<img src="readMeImage.png" width="auto" />
+
+<br>
 
 ## Technologies Used
 
