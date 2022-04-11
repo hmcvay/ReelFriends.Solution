@@ -24,7 +24,18 @@ We all want some good company when watching our favorite movies. That's where Re
 
 * To use this application you have to have MySql Workbench installed. Follow setup instructions [here!](https://www.learnhowtoprogram.com/c-and-net/getting-started-with-c/installing-and-configuring-mysql)
 * Clone this repository down to your local machine.
-* In the top directory (ForcedFriends.Solution) create an appsettings.json file with the following information `{ "ConnectionStrings":{ "DefaultConnection":"Server=localhost;Port=3306;database=firstname_lastname;uid=root; pwd=[YOURPASSWORDHERE];" } }`
+* In the top directory (ForcedFriends.Solution) create `appsettings.json` file with the following code:
+
+```
+{
+  "ConnectionStrings": {
+      "DefaultConnection": "Server=localhost;Port=3306;database=firstname_lastname;uid=root;pwd={YOURPASSWORDHERE};"
+  }
+}
+```
+
+* Replace `{YOURPASSWORDHERE}` with the password you used when setting up MySQLWorkbench
+
 * Save this file then navigate to the main project folder by typing `cd ForcedFriends` into your terminal.
 * Type `dotnet restore` into the terminal to install project dependencies.
 * Type `dotnet ef database update` into the terminal to ensure database is properly connected.
@@ -32,7 +43,6 @@ We all want some good company when watching our favorite movies. That's where Re
 
 ## Known Bugs
 
-* Currently there's no messaging system to communicate with your matches.
 * User can currently add the same movie to their watchlist. A user shouldn't be able to add multiple same movies 
 * Let us know if you find any!
 
